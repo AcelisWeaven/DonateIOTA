@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate IOTA</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont,
+            "Segoe UI", "Roboto", "Oxygen",
+            "Ubuntu", "Cantarell", "Fira Sans",
+            "Droid Sans", "Helvetica Neue", sans-serif;
+            background-color: #223446;
+            color: #00ffff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        #qrcode {
+            display: inline-block;
+            padding: 20px;
+            background-color: white;
+        }
+        .help {
+            position: absolute;
+            text-align: left;
+            top: 0;
+            right: 0;
+        }
+        .help .btn {
+            color: #00a4c4;
+            border: 1px solid #00a4c4;
+            border-radius: 5px;
+            padding: 4px 14px;
+            margin: 15px;
+        }
+        .help .text {
+            position: absolute;
+            width: 400px;
+            right: -440px;
+            background-color: white;
+            color: #000000;
+            transition: all 300ms ease-out;
+            padding: 0 20px;
+        }
+        .help:hover .text {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Donate IOTA to <em>AcelisWeaven</em></h1>
+<div id="address"></div>
+<div>
+    <p>Donate with <strong>Trinity</strong>:</p>
+    <div id="qrcode"></div>
+</div>
+
+<div class="help">
+    <div class="btn">About this page</div>
+    <div class="text">
+        <h3>What is this page?</h3>
+        <p>This page is a common template aiming to allow community developers to receive donations.</p>
+        <h3>But why?</h3>
+        <p>Today, when an IOTA developer changes his donation address, he has to update it everywhere.</p>
+        <p>With this template, the single thing a developer has to do is to update his <a href="address.txt">address.txt file</a>.</p>
+        <p>This file can also be fetched by a machine to automatically gather a developer's donation address.</p>
+        <h3>How can I use this template?</h3>
+        <p><a href="https://github.com/AcelisWeaven/DonateIOTA/fork">Fork the repository</a>, change <em>address.txt</em> and <em>index.html</em> and you're done.</p>
+        <p>Your donation URL will look like:<br>
+            https://<em>your-github-username</em>.github.io/DonateIOTA</p>
+    </div>
+</div>
+
+<script src="vendors/polyfill-promise.min.js"></script>
+<script src="vendors/polyfill-fetch.js"></script>
+<script src="vendors/qrcode.min.js"></script>
+<script>
+    fetch('address.txt')
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (address) {
+            address = address.trim();
+            var trinityPayload = {
+                'address': address,
+                'message': "Donation"
+            };
+            var qrcode = new QRCode("qrcode");
+            qrcode.makeCode(JSON.stringify(trinityPayload));
+            document.getElementById("address").innerText = address;
+        })
+</script>
+</body>
+</html>
