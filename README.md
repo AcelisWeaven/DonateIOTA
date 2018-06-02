@@ -2,7 +2,7 @@
 
 A easy-to-fork template allowing IOTA community developers to maintain their donation address in a single place.
 
-Demo: https://acelisweaven.github.io/DonateIOTA
+Demo: https://acelisweaven.github.io/DonateIOTA/
 
 ## What is this page?
 
