@@ -6,7 +6,7 @@ Demo: https://acelisweaven.github.io/DonateIOTA/
 
 ## What is this page?
 
-This page is a common template aiming to allow community developers to receive donations.
+This page is a fork-friendly page template aiming to help community developers update their donation address and share it easily.
 
 ## But why?
 
