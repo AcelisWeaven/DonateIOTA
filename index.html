@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Donate IOTA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont,
@@ -14,43 +15,58 @@
             text-align: center;
             overflow-x: hidden;
         }
+
+        #address {
+            word-break: break-word;
+        }
+
         #qrcode {
             display: inline-block;
             padding: 20px;
             background-color: white;
+            margin-bottom: 20px;
         }
-        .help {
-            position: absolute;
-            text-align: left;
-            top: 0;
-            right: 0;
+
+        #toggle {
+            display: none;
         }
-        .help .btn {
+
+        .btn {
             color: #00a4c4;
             border: 1px solid #00a4c4;
             border-radius: 5px;
             padding: 4px 14px;
-            margin: 15px;
+            cursor: pointer;
         }
-        .help .text {
-            position: absolute;
-            width: 400px;
-            right: -440px;
+
+        .btn:hover {
+            background-color: #2d415a;
+        }
+
+        .text {
+            display: none;
             background-color: white;
             color: #000000;
-            transition: all 300ms ease-out;
-            padding: 0 20px;
+            margin-top: 20px;
+            padding: 10px 20px 20px 20px;
         }
-        .help:hover .text {
-            right: 0;
+
+        #toggle:checked ~ .text {
+            display: block;
         }
+
         a {
             color: #00a4c4;
             text-decoration: none;
         }
+
         a:hover {
             color: #00b7da;
             text-decoration: underline;
+        }
+
+        .align-left {
+            text-align: left;
         }
     </style>
 </head>
@@ -62,18 +78,22 @@
     <div id="qrcode"></div>
 </div>
 
-<div class="help">
-    <div class="btn">About this page</div>
+<div class="align-left">
+    <input type="checkbox" id="toggle"/>
+    <label for="toggle" class="btn">About this page</label>
     <div class="text">
         <h3>What is this page?</h3>
-        <p>This page is a fork-friendly page template aiming to help community developers update their donation address and share it easily.</p>
+        <p>This page is a fork-friendly page template aiming to help community developers update their donation
+            address and share it easily.</p>
         <p><a href="https://github.com/AcelisWeaven/DonateIOTA">⟶ Source code</a></p>
         <h3>But why?</h3>
         <p>Today, when an IOTA developer changes his donation address, he has to update it everywhere.</p>
-        <p>With this template, the single thing a developer has to do is to update his <a href="address.txt">address.txt file</a>.</p>
+        <p>With this template, the single thing a developer has to do is to update his <a href="address.txt">address.txt
+            file</a>.</p>
         <p>This file can also be fetched by a machine to automatically gather a developer's donation address.</p>
         <h3>How can I use this template?</h3>
-        <p><a href="https://github.com/AcelisWeaven/DonateIOTA/fork">Fork the repository</a>, change <em>address.txt</em> and <em>index.html</em> and you're done.</p>
+        <p><a href="https://github.com/AcelisWeaven/DonateIOTA/fork">Fork the repository</a>, change
+            <em>address.txt</em> and <em>index.html</em> and you're done.</p>
         <p>Your donation URL will look like:<br>
             https://<em>your-github-username</em>.github.io/DonateIOTA</p>
     </div>
